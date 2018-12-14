@@ -30,10 +30,10 @@ public class WelcomeController {
      */
 
 
-    @RequestMapping(value = "/hello")
-    public String hello1() {
-        return "hello";
-    }
+//    @RequestMapping(value = "/hello")
+//    public String hello1() {
+//        return "hello";
+//    }
 
     @RequestMapping(value = "/students/{id}")
     public String studentList(@PathVariable("id") long id) {

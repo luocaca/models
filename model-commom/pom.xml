@@ -12,5 +12,10 @@
     <artifactId>model-commom</artifactId>
 
 
+    <dependencies>
+
+
+    </dependencies>
+
 
 </project>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+
+<form method="post" action="dashboard.html" th:action="@{/user/login}">
+
+
+    用户名：<input type="text" name="username" placeholder="用户名"/>
+    密码：<input type="text" name="password" placeholder="密码"/>
+    <button onsubmit="true" type="submit" name="登录" />
+
+
+</form>
+
+<p style="color: red" th:text="${msg}"></p>
+<p style="color: red" th:text="${msg}"></p>
+<p style="color: red" th:text="${msg}"></p>
+<p style="color: red" th:text="${msg}"></p>
+</body>
+</html>
