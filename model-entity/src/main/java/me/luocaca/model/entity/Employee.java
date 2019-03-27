@@ -1,23 +1,40 @@
 package me.luocaca.model.entity;
 
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 员工
  */
+@Entity
 public class Employee implements Serializable {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String lastName ;
-    private String email ;
+    @Column
+    private String lastName;
+    @Column
+    private String email;
 
     //1 male , 0 female
-    private Integer gender ;
-    private Department department;
-    private Date birth ;
+    @Column
+    private Integer gender;
 
+    private Department department;
+
+    @Column
+    private Integer departmentId;
+
+    @Column
+    private Date birth;
+
+    public Employee(){
+
+    }
 
     public Employee(Integer id, String lastName, String email, Integer gender, Department department) {
         this.id = id;

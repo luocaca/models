@@ -25,13 +25,64 @@
     <properties>
         <java.version>1.8</java.version>
         <mysql-connector.version>5.1.46</mysql-connector.version>
-        <mybatis-spring-boot.version>1.2.0</mybatis-spring-boot.version>
+        <mybatis-spring-boot.version>1.3.2</mybatis-spring-boot.version>
         <start-class>me.luocaca.model.ModelApiApplication</start-class>
         <!--<start-class>me.luocaca.model.web.ModelWebApplication</start-class>-->
     </properties>
 
 
     <dependencies>
+        <!-- 权限管理-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+
+        <!--  邮件-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.22</version>
+        </dependency>
+
+        <!--amqp 消息通知-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-amqp</artifactId>-->
+        <!--</dependency>-->
+
+        <!--数据缓存-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+        <!--<dependency>-->
+        <!--<groupId>log4j</groupId>-->
+        <!--<artifactId>log4j</artifactId>-->
+        <!--<version>1.2.17</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.6</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
@@ -50,9 +101,9 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-webmvc</artifactId>-->
-            <!--<version>5.1.3.RELEASE</version>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-webmvc</artifactId>-->
+        <!--<version>5.1.3.RELEASE</version>-->
 
         <!--</dependency>-->
 
@@ -62,7 +113,8 @@
             <scope>test</scope>
         </dependency>
 
-        <!--热部署库-->
+        <!--热部署库 -->
+        <!--https://www.cnblogs.com/wobuchifanqie/p/9908243.html-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -92,62 +144,75 @@
         </dependency>
 
 
+        <!--jdbc 魔板-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <!--<version>1.5.0.RELEASE</version>-->
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+
     </dependencies>
 
     <!--<build>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<mainClass>${start-class}</mainClass>-->
-                <!--</configuration>-->
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--<configuration>-->
+    <!--<mainClass>${start-class}</mainClass>-->
+    <!--</configuration>-->
 
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>repackage</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-
-
-            <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
-            <!--&lt;!&ndash;<groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
-            <!--&lt;!&ndash;<artifactId>maven-shade-plugin</artifactId>&ndash;&gt;-->
-            <!--&lt;!&ndash;<version>1.4</version>&ndash;&gt;-->
-            <!--&lt;!&ndash;<executions>&ndash;&gt;-->
-            <!--&lt;!&ndash;<execution>&ndash;&gt;-->
-            <!--&lt;!&ndash;<phase>package</phase>&ndash;&gt;-->
-            <!--&lt;!&ndash;<goals>&ndash;&gt;-->
-            <!--&lt;!&ndash;<goal>shade</goal>&ndash;&gt;-->
-            <!--&lt;!&ndash;</goals>&ndash;&gt;-->
-            <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
-            <!--&lt;!&ndash;<createSourcesJar>false</createSourcesJar>&ndash;&gt;-->
-            <!--&lt;!&ndash;<promoteTransitiveDependencies>true</promoteTransitiveDependencies>&ndash;&gt;-->
-            <!--&lt;!&ndash;<artifactSet>&ndash;&gt;-->
-            <!--&lt;!&ndash;<includes>&ndash;&gt;-->
-            <!--&lt;!&ndash;&lt;!&ndash; 这里只是随便拿了几个模块来作为例子，实际上如下模块是不应该打包在一起的 &ndash;&gt;&ndash;&gt;-->
-            <!--&lt;!&ndash;<include>me.luocaca:model-commom</include>&ndash;&gt;-->
-            <!--&lt;!&ndash;</includes>&ndash;&gt;-->
-            <!--&lt;!&ndash;</artifactSet>&ndash;&gt;-->
-            <!--&lt;!&ndash;<transformers>&ndash;&gt;-->
-
-            <!--&lt;!&ndash;</transformers>&ndash;&gt;-->
-            <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
-            <!--&lt;!&ndash;</execution>&ndash;&gt;-->
-            <!--&lt;!&ndash;</executions>&ndash;&gt;-->
-            <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
+    <!--<executions>-->
+    <!--<execution>-->
+    <!--<goals>-->
+    <!--<goal>repackage</goal>-->
+    <!--</goals>-->
+    <!--</execution>-->
+    <!--</executions>-->
+    <!--</plugin>-->
 
 
-        <!--</plugins>-->
+    <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
+    <!--&lt;!&ndash;<groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+    <!--&lt;!&ndash;<artifactId>maven-shade-plugin</artifactId>&ndash;&gt;-->
+    <!--&lt;!&ndash;<version>1.4</version>&ndash;&gt;-->
+    <!--&lt;!&ndash;<executions>&ndash;&gt;-->
+    <!--&lt;!&ndash;<execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;<phase>package</phase>&ndash;&gt;-->
+    <!--&lt;!&ndash;<goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;<goal>shade</goal>&ndash;&gt;-->
+    <!--&lt;!&ndash;</goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+    <!--&lt;!&ndash;<createSourcesJar>false</createSourcesJar>&ndash;&gt;-->
+    <!--&lt;!&ndash;<promoteTransitiveDependencies>true</promoteTransitiveDependencies>&ndash;&gt;-->
+    <!--&lt;!&ndash;<artifactSet>&ndash;&gt;-->
+    <!--&lt;!&ndash;<includes>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash; 这里只是随便拿了几个模块来作为例子，实际上如下模块是不应该打包在一起的 &ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<include>me.luocaca:model-commom</include>&ndash;&gt;-->
+    <!--&lt;!&ndash;</includes>&ndash;&gt;-->
+    <!--&lt;!&ndash;</artifactSet>&ndash;&gt;-->
+    <!--&lt;!&ndash;<transformers>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</transformers>&ndash;&gt;-->
+    <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+    <!--&lt;!&ndash;</execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;</executions>&ndash;&gt;-->
+    <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
+
+
+    <!--</plugins>-->
     <!--</build>-->
 
 

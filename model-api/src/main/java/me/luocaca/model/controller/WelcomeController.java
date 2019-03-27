@@ -1,6 +1,7 @@
 package me.luocaca.model.controller;
 
 
+import me.luocaca.model.mapper.PersonMapper;
 import me.luocaca.model.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,9 @@ public class WelcomeController {
 
     @Autowired
     PersonService personService;
+
+    @Autowired
+    PersonMapper personMapper;
 
     @RequestMapping(value = "/home")
     public String hello() {
@@ -37,13 +41,13 @@ public class WelcomeController {
 
     @RequestMapping(value = "/students/{id}")
     public String studentList(@PathVariable("id") long id) {
-        return personService.queryById(id).toString();
+        return personMapper.queryById(id).toString();
     }
 
 
     @RequestMapping(value = "/studentList")
     public String studentAllList() {
-        return personService.queryList(Integer.MAX_VALUE, 0).toString();
+        return personMapper.queryList(Integer.MAX_VALUE, 0).toString();
     }
 
 

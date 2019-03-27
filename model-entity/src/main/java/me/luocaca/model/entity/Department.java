@@ -1,13 +1,19 @@
 package me.luocaca.model.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * 部门
  */
+@Entity
 public class Department implements Serializable{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column
     private String departmentName;
 
 
@@ -31,4 +37,7 @@ public class Department implements Serializable{
     public void setId(Integer id) {
         this.id = id;
     }
+
+
+
 }

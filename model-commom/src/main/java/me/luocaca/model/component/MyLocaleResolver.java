@@ -1,5 +1,7 @@
 package me.luocaca.model.component;
 
+import net.bytebuddy.asm.Advice;
+import org.springframework.context.annotation.Bean;
 import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.LocaleResolver;
@@ -34,8 +36,6 @@ public class MyLocaleResolver implements LocaleResolver {
     public void setLocale(HttpServletRequest request, @Nullable HttpServletResponse response, @Nullable Locale locale) {
 
         System.out.println("-----------------setLocale----------");
-
-
     }
 
 

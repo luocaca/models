@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="UTF-8">
+    <title>简书模块</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="/asserts/css/entry.css">
+<link rel="stylesheet" type="text/css" href="/asserts/css/web.css">
+
+<script src="/asserts/js/entry.js"></script>
+<script src="/asserts/js/web-base.js"></script>
+
+
+<style>
+    body {
+        min-width: 483px;
+
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .search-result-highlight {
+        color: #ce8483;
+    }
+
+</style>
+
+
+<body>
+
+
+<ul class="note-list">
+
+
+    <!--<li th:each="item:${enties}">-->
+
+
+    <!--<td th:text="${item.title}"/>-->
+
+
+    <!--</li>-->
+
+
+    <li th:each="item : ${enties}">
+        <div class="content">
+            <div class="author"><a href="https://www.jianshu.com/u/66f24f2c0f36" target="_blank" class="avatar"><img
+                    th:src="${item.user.avatar_url}"></a>
+                <div class="info"><a th:text="${item.user.nickname}" href="https://www.jianshu.com/u/66f24f2c0f36"
+                                     class="nickname">treelake</a>
+                    <span class="time">   </span>
+                </div>
+            </div>
+
+
+            <p class="abstract" th:utext="${item.content}"></p>
+
+            <div class="meta"><a href="https://www.jianshu.com/p/dcd6438ce4c7" target="_blank"><i
+                    class="iconfont ic-list-read"></i> 20777
+            </a> <a href="https://www.jianshu.com/p/dcd6438ce4c7#comments" target="_blank"><i
+                    class="iconfont ic-list-comments"></i> 37
+            </a> <span><i class="iconfont ic-list-like"></i> 582
+        </span> <span><i class="iconfont ic-list-money"></i> 1
+        </span>
+            </div>
+
+        </div>
+    </li>
+
+
+</ul>
+
+
+<div>
+    <ul class="pagination">
+        <li><a>上一页</a></li>
+        <li><a>1</a></li>
+        <li><a href="javascript:void(null)" class="active">2</a></li>
+        <li><a>3</a></li>
+        <li><a>4</a></li>
+        <li><a>5</a></li>
+        <li><a>下一页</a></li>
+    </ul>
+</div>
+
+</body>
+
+<script>
+
+
+    var uls = document.getElementsByClassName("pagination");
+    for (var i = 0; i < uls.length; i++) {
+        uls[i].onclick = function () {
+            alert(i);
+        };
+
+
+    }
+
+
+</script>
+
+
+</html>

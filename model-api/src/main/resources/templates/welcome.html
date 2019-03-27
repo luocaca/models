@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<h1 align="center">欢迎光临武林秘籍管理系统</h1>
+<h2 align="center">游客您好，如果想查看武林秘籍 <a th:href="@{/login}">请登录</a></h2>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="注销"/>
+</form>
+<hr>
+
+<h3>普通武功秘籍</h3>
+<ul>
+    <li><a th:href="@{/level1/1}">罗汉拳</a></li>
+    <li><a th:href="@{/level1/2}">武当长拳</a></li>
+    <li><a th:href="@{/level1/3}">全真剑法</a></li>
+</ul>
+
+<h3>高级武功秘籍</h3>
+<ul>
+    <li><a th:href="@{/level2/1}">太极拳</a></li>
+    <li><a th:href="@{/level2/2}">七伤拳</a></li>
+    <li><a th:href="@{/level2/3}">梯云纵</a></li>
+</ul>
+
+<h3>绝世武功秘籍</h3>
+<ul>
+    <li><a th:href="@{/level3/1}">葵花宝典</a></li>
+    <li><a th:href="@{/level3/2}">龟派气功</a></li>
+    <li><a th:href="@{/level3/3}">独孤九剑</a></li>
+</ul>
+
+
+<div>
+    <!--<form id="mainform" action="/jane/searchJson" method="post">-->
+    <!--<table class="formTable" style="padding-left:16px;padding-top:20px;">-->
+
+    <!--<td>优先级：</td>-->
+    <!--<td>-->
+    <!--<select id="leve" name="leve" style="widht:120px;" class="easyui-combobox">-->
+    <!--<option value="0">普通</option>-->
+    <!--<option value="1">中级</option>-->
+    <!--<option value="2" selected>高级</option>-->
+    <!--</select>-->
+
+    <!--</td>-->
+
+
+    <!--</table>-->
+    <!--<input type="hidden" name="groupId" id="groupId" value="5969"/>-->
+    <!--<input type="hidden" name="userId" id="userId" value="533670"/>-->
+    <!--<input type="hidden" name="id" id="id" value="26518"/>-->
+    <!--</form>-->
+</div>
+
+<div class="panel window" style="display: block; width: 468px; left: 124px; top: 251.5px; z-index: 9025;">
+
+    <div id="userGroupUpdateDlg" title="" class="panel-body panel-body-noborder window-body"
+         style="overflow: hidden; width: 466px; height: 204px;">
+        <div class="panel" style="width: 466px;">
+            <div title="" class="panel-body panel-body-noheader panel-body-noborder dialog-content"
+                 style="width: 466px; height: 167px;">
+                <div>
+                    <form id="mainform" action="/jane/searchJson?keyWorld=aaa" method="get">
+                        <table class="formTable" style="padding-left:16px;padding-top:20px;">
+
+                            <tbody>
+                            <tr>
+                                <td>优先级：</td>
+                                <td>
+                                    <select id="leve" style="display: block;" class="easyui-combobox combobox-f combo-f"
+                                            comboname="keyWorld">
+                                        <option value="0">普通</option>
+                                        <option value="1">中级</option>
+                                        <option value="2" selected="">高级</option>
+                                    </select><span class="combo" style="width: 48px; height: 20px;"><input type="text"
+                                                                                                           class="combo-text validatebox-text validatebox-f textbox"
+                                                                                                           autocomplete="off"
+                                                                                                           style="width: 26px; height: 20px; line-height: 20px;"><span><span
+                                        class="combo-arrow" style="height: 20px;"></span></span><input type="hidden"
+                                                                                                       class="combo-value"
+                                                                                                       name="leve"
+                                                                                                       value="2"></span>
+
+                                </td>
+
+
+                            </tr>
+                            </tbody>
+
+
+                        </table>
+                        <input type="hidden" name="groupId" id="groupId" value="5969">
+                        <input type="hidden" name="userId" id="userId" value="533670">
+                        <input type="hidden" name="id" id="id" value="26518">
+
+
+                        <input type="submit" value="增加一个submit">
+                    </form>
+                </div>
+                <script type="text/javascript">
+
+
+                    $(function () {
+
+
+                        $('#mainform').form({
+                            onSubmit: function () {
+                                var isValid = $(this).form('validate');
+                                return isValid;	// 返回false终止表单提交
+                            },
+                            success: function (data) {
+                                if (data == "success") {
+                                    successTip(data, $('#data_list').datagrid(), updateGroupUserDlg);
+                                }
+                                else {
+                                    $.easyui.messager.alert("操作失败");
+                                }
+                            }
+                        });
+                    });
+
+                </script>
+            </div>
+        </div>
+        <div class="dialog-button"><a href="javascript:void(0)" class="l-btn l-btn-small" group="" id=""><span
+                class="l-btn-left"><span class="l-btn-text">确认</span></span></a><a href="javascript:void(0)"
+                                                                                   class="l-btn l-btn-small" group=""
+        ><span class="l-btn-left"><span
+                class="l-btn-text">取消</span></span></a></div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+</body>
+
+
+<!--<script>-->
+
+
+<!--$(function () {-->
+
+
+<!--$('#mainform').form({-->
+<!--onSubmit: function () {-->
+<!--var isValid = $(this).form('validate');-->
+<!--return isValid;	// 返回false终止表单提交-->
+<!--},-->
+<!--success: function (data) {-->
+<!--if (data == "success") {-->
+<!--successTip(data, $('#data_list').datagrid(), updateGroupUserDlg);-->
+<!--}-->
+<!--else {-->
+<!--$.easyui.messager.alert("操作失败");-->
+<!--}-->
+<!--}-->
+<!--});-->
+<!--});-->
+
+
+<!--</script>-->
+
+</html>
